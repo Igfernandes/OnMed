@@ -22,4 +22,6 @@ Route::resource('/', ProfessoresController::class);
 
 Route::get('/{id}/edit', [ProfessoresController::class, 'edit']);
 
+Route::put('/{id}', [ProfessoresController::class, 'update']);
+
 Route::delete('/{id}', [ProfessoresController::class, 'destroy']);

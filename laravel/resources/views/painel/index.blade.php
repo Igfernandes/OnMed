@@ -19,11 +19,6 @@
                                     @foreach($professor as $p)
 
                                 <div class="school_development-box-item">
-                                    <div class="school_development-box-item-perfil">
-                                       <div class="school_development-box-item-perfil-img">
-                                           <img src="{{url('storage/images/'.$p->fotografia)}}" alt="Perfil do aluno xxx">
-                                       </div>
-                                    </div>
                                     <div class="school_development-box-item-info">
                                         <div class="school_development-box-item-info-name">
                                             <p>{{$p->nome}}</p>

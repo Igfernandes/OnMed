@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Chamada</title>
+
+    <link rel="stylesheet" href="./css/school.css">
+</head>
+<body>
+
+  <main>
+    <div class="container-fluid school">
+        <div class="row school_content">
+            <div class="col-12 school_content-collum">
+                <div class="filter"></div>
+                <div class="container">
+                    <div class="row school_development">
+                        <div class="col-12 school_development-collum">
+                            <div class="school_development-title">
+                                <h2>Professores Registrados</h2>
+                            </div>
+                            <div class="school_development-create">
+                                <button data-bs-toggle="modal" data-bs-target="#modalcreate">Adicionar Professor</button>
+                            </div>
+                            <div class="school_development-box d-flex justify-content-around">
+                                <% if(professor != null){ 
+                                    for(let $r of professor){
+ 
+                                %>
+                                    
+                                <div class="school_development-box-item">
+                                    <div class="school_development-box-item-info">
+                                        <div class="school_development-box-item-info-name">
+                                            <p data-field="nome"><%= $r.nome %></p>
+                                        </div>
+                                       <div class="school_development-box-item-info--box text-center">
+                                            <div class="school_development-box-item-info--box-age">
+                                                <p >Matricula: <span data-field="matricula"><%= $r.matricula %></span></p>
+                                            </div>
+                                       </div>
+                                        <div class="school_development-box-item-info-class">
+                                            <table>
+                                                <thead>
+                                                   <tr>
+                                                        <th>Matéria</th>
+                                                        <th>Horário</th>
+                                                   </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td data-field="materia"><%= $r.materia %></td>
+                                                        <td data-field="horario"><%= $r.horario %> hrs</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="school_development-box-item-info-btns d-flex">
+                                            <div class="school_development-box-item-info-btns-1">
+                                                <a data-bs-toggle="modal" data-bs-target="#modaledit" data-edit="<%= $r.id %>">Atualizar</a>
+                                            </div>
+                                            <div class="school_development-box-item-info-btns-1">
+                                                <form action="/delete" method="POST">
+                                                    <input type="hidden" name="id" value="<%= $r.id %>">
+                                                    <button type="submit" >Excluir</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% 
+                                    }   
+                                    }else{ %>
+                                    <h2 class="text-white">Não existem registros</h2>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+
+
+
+    <!--  MODAL CREATE -->
+    <div class="modal fade " id="modalcreate" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Informações do Professor</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+            </div>
+            <div class="modal-body">
+                <form action="/info" method="POST">
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="text">Nome</label>
+                                <input type="text" class="form-control" name="nome" aria-describedby="nome" placeholder="Fula de tal">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="text">Matricula</label>
+                                <input type="text" class="form-control" name="matricula" aria-describedby="matricula" placeholder="00-0000">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <select name="materia" class="custom-select" required>
+                                <option >Escolha a matéria</option>
+                                <option value="matematica">Matemática</option>
+                                <option value="historia">História</option>
+                                <option value="portugues">Português</option>
+                                <option value="ciencias">Ciências</option>
+                                <option value="geografia">Geografia</option>
+                                <option value="artes">Artes</option>
+                                </select>
+                                <div class="invalid-feedback">A sua escolha não é válida</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <select name="horario" class="custom-select" required>
+                                <option value="">Escolha o horário</option>
+                                <option value="09:00">09:00</option>
+                                <option value="10:00">10:00</option>
+                                <option value="11:00">11:00</option>
+                                <option value="12:00">12:00</option>
+                                <option value="13:00">13:00</option>
+                                <option value="14:00">14:00</option>
+                                <option value="15:00">15:00</option>
+                                <option value="16:00">16:00</option>
+                                <option value="17:00">17:00</option>
+                                <option value="18:00">18:00</option>
+                                </select>
+                                <div class="invalid-feedback">A sua escolha não é válida</div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" >Registrar</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+    <!--  MODAL CREATE -->
+    <div class="modal fade " id="modaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Informações do Professor</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">x</button>
+                </div>
+                <div class="modal-body">
+                    <form action="/update" method="POST" class="edit-form">
+                        <input type="hidden" name="id" value="">
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="text">Nome</label>
+                                    <input type="text" class="form-control" name="nome" aria-describedby="nome" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="text">Matricula</label>
+                                    <input type="text" class="form-control" name="matricula" aria-describedby="matricula" value="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <select name="materia" class="custom-select" required>
+                                    <option data-materia>Matéria atual:</option>
+                                    <option value="matematica">Matemática</option>
+                                    <option value="historia">História</option>
+                                    <option value="portugues">Português</option>
+                                    <option value="ciencias">Ciências</option>
+                                    <option value="geografia">Geografia</option>
+                                    <option value="artes">Artes</option>
+                                    </select>
+                                    <div class="invalid-feedback">A sua escolha não é válida</div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-group">
+                                    <select name="horario" class="custom-select" required>
+                                    <option data-horario>Horario atual:</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="13:00">13:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="18:00">18:00</option>
+                                    </select>
+                                    <div class="invalid-feedback">A sua escolha não é válida</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" data-dismiss="modal">Salvar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  
+    <!-- SCRIPTS -->
+    <script src="./js/libary/jquery/jquery-3.6.0.min.js"></script>
+    <script src="./js/libary/bootstrap/bootstrap.min.js"></script>
+    <script src="./js/load/_load.js"></script>
+
+  </body>
+  </html>
+  
+

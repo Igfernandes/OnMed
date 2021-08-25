@@ -19,7 +19,6 @@ class Professores extends Migration
             $table->integer('matricula');
             $table->string('materia');
             $table->string('horario');
-            $table->string('fotografia');
             $table->timestamps();
         });
     }

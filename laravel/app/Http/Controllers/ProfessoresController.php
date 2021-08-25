@@ -16,7 +16,7 @@ class ProfessoresController extends Controller
     public function index()
     {
         $professor = Professores::all();
-        return view('painel.index', compact(['professor']));
+        return view('principal', compact(['professor']));
     }
 
     /**
@@ -26,7 +26,7 @@ class ProfessoresController extends Controller
      */
     public function create()
     {
-        //
+        return view('criar');
     }
 
     /**
@@ -38,16 +38,12 @@ class ProfessoresController extends Controller
     public function store(Request $request)
     {
 
-        $img = $request->file('fotografia')->getClientOriginalName();
-        $request->file('fotografia')->storeAs('/public/images/', $img);
-
 
         $professor = new Professores();
         $professor->nome = $request->input('nome');
         $professor->matricula = $request->input('matricula');
         $professor->horario = $request->input('horario');
         $professor->materia = $request->input('materia');
-        $professor->fotografia = $img;
 
         $professor->save();
         return redirect()->route('index');
@@ -74,7 +70,7 @@ class ProfessoresController extends Controller
     {
         $professor = Professores::find($id);
 
-        return view('footer.footer', compact('professor'));
+        return view('editar', compact('professor'));
     }
 
     /**
@@ -92,11 +88,10 @@ class ProfessoresController extends Controller
             $professor->matricula = $request->input('matricula');
             $professor->horario = $request->input('horario');
             $professor->materia = $request->input('materia');
-            $professor->fotografia = $request->input('fotografia');
 
             $professor->save();
 
-            return redirect()->route('update');
+            return redirect()->route('index');
     }
 
     /**
@@ -110,7 +105,7 @@ class ProfessoresController extends Controller
             $professor = Professores::findOrFail($id);
 
             $professor->delete();
-            redirect()->route('index');
+            return redirect()->route('index');
 
 
     }

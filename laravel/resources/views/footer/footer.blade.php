@@ -10,7 +10,7 @@
         </button>
       </div>
       <div class="modal-body">
-          @foreach ($professor as $p)
+          
         <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
         @csrf
             <div class="form-row">
@@ -113,12 +113,6 @@
             <div class="form-row">
                 <div class="col">
                     <div class="form-group">
-                        <label for="text">Data de nascimento</label>
-                        <input type="text" class="form-control" name="data_de_nasc" aria-describedby="data de nascimento" placeholder="25..." value="{{$p['data_nasc']}}" >
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="form-group">
                         <label for="text">Matricula</label>
                         <input type="text" class="form-control" name="matricula" aria-describedby="matricula" placeholder="00-0000" value="{{$p['matricula']}}">
                     </div>
@@ -165,7 +159,7 @@
     </div>
   </div>
 </div>
-@endforeach
+
 <!-- MODAL DELETE -->
 <div class="modal fade" id="modaldeletar" tabindex="-1" role="dialog" aria-labelledby="modaldeletarCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

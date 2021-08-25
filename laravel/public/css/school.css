@@ -6835,7 +6835,7 @@ main .school {
     width: 20%;
     text-align: right;
     z-index: 0; }
-    main .school_development-create button {
+    main .school_development-create a {
       background: #fff;
       color: #00bdff;
       border: none;
@@ -6845,9 +6845,9 @@ main .school {
       cursor: pointer;
       transition: transform .2s ease-in-out;
       outline-color: #00bdff; }
-      main .school_development-create button:active {
+      main .school_development-create a:active {
         transform: scale(0.85); }
-      main .school_development-create button:focus {
+      main .school_development-create a:focus {
         outline-style: none; }
   main .school_development-box {
     flex-wrap: wrap; }
@@ -6898,12 +6898,13 @@ main .school {
               color: #fff !important;
               text-align: center;
               cursor: pointer; }
-            main .school_development-box-item-info-btns-1:nth-of-type(2) a {
+            main .school_development-box-item-info-btns-1 button {
               color: #00bdff !important;
               display: block;
-              padding: 3% 0;
-              background: transparent;
+              padding: 3% 5%;
+              background: #fff;
               font-weight: 600;
-              border: 3px solid #00bdff; }
+              border: 3px solid #00bdff;
+              cursor: pointer; }
 
 /*# sourceMappingURL=school.css.map */

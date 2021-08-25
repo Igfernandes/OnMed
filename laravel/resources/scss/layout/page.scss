@@ -35,7 +35,7 @@ main{
                 width: 20%;
                 text-align: right;
                 z-index: 0;
-                button{
+                a{
                     background: #fff;
                     color: #00bdff;
                     border: none;
@@ -124,16 +124,16 @@ main{
                                     text-align: center;
                                     cursor: pointer;
                                 }
-                                &:nth-of-type(2){
-                                    a{
-                                        color: #00bdff !important;
-                                        display: block;
-                                        padding: 3% 0;
-                                        background: transparent;
-                                        font-weight: 600;
-                                        border: 3px solid #00bdff;
-                                    }
+                                button{
+                                    color: #00bdff !important;
+                                    display: block;
+                                    padding: 3% 5%;
+                                    background: #fff;
+                                    font-weight: 600;
+                                    border: 3px solid #00bdff;
+                                    cursor: pointer;
                                 }
+
                             }
                         }
                     }
